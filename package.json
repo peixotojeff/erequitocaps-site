@@ -1,0 +1,10 @@
+{
+    "name": "erequitocaps-site",
+    "version": "1.0.0",
+    "scripts": {
+      "start": "vercel dev"
+    },
+    "dependencies": {
+      "@supabase/supabase-js": "^2.45.4"
+    }
+  }

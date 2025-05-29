@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ErequitoCaps</title>
+    <!-- Adicione seus estilos CSS aqui -->
+</head>
+<body>
+    <!-- Conteúdo original do index.html -->
+    <section>
+        <h1>O FIM DAS SUAS EREÇÕES FRACAS, VOLTE A AGIR COMO HOMEM</h1>
+        <form id="buy-form">
+            <input type="email" id="email" placeholder="Seu e-mail" required>
+            <input type="tel" id="telefone" placeholder="Seu telefone (com DDD)" required>
+            <button type="submit" onclick="handleBuy('6-months')">Comprar Kit 6 Meses</button>
+            <button type="submit" onclick="handleBuy('3-months')">Comprar Kit 3 Meses</button>
+            <button type="submit" onclick="handleBuy('1-month')">Comprar Kit 1 Mês</button>
+        </form>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script>
+        const supabase = Supabase.createClient('https://ygfuhnhkjuygiaoqyuhc.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlnZnVobmhranV5Z2lhb3F5dWhjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NTgyNzAsImV4cCI6MjA2NDEzNDI3MH0.ykTlt03WV47J30gYoj96-pStFeN-k3IL1ECxFDPxjpw');
+
+        async function handleBuy(kit) {
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+
+            // Salvar dados do usuário no Supabase
+            const { error } = await supabase
+                .from('leads')
+                .insert({ email, telefone, kit_selecionado: kit });
+
+            if (error) {
+                console.error('Erro ao salvar lead:', error);
+                alert('Erro ao processar. Tente novamente.');
+                return;
+            }
+
+            // Redirecionar para o checkout da Payt
+            window.location.href = `https://api.payt.com/checkout?kit=${kit}&email=${encodeURIComponent(email)}&telefone=${encodeURIComponent(telefone)}`;
+        }
+    </script>
+</body>
+</html>
