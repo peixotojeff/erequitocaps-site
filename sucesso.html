@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Compra Concluída</title>
+</head>
+<body>
+    <h1>Compra Concluída com Sucesso!</h1>
+    <p>Seu pedido: <span id="pedido"></span></p>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('pedido').textContent = urlParams.get('pedido');
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Erro na Compra</title>
+</head>
+<body>
+    <h1>Erro ao Processar a Compra</h1>
+    <p>Motivo: <span id="motivo"></span></p>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('motivo').textContent = urlParams.get('motivo');
+    </script>
+</body>
+</html>
