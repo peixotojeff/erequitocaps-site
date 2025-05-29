@@ -4,30 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ErequitoCaps</title>
-    <!-- Adicione seus estilos CSS aqui -->
+    <!-- Adicione seu CSS aqui -->
+    <style>
+        /* Estilo básico para o formulário */
+        body { font-family: Arial, sans-serif; text-align: center; }
+        form { margin: 20px; }
+        input, button { margin: 10px; padding: 10px; }
+        button { cursor: pointer; background-color: #28a745; color: white; border: none; }
+    </style>
 </head>
 <body>
-    <!-- Conteúdo original do index.html -->
     <section>
         <h1>O FIM DAS SUAS EREÇÕES FRACAS, VOLTE A AGIR COMO HOMEM</h1>
         <form id="buy-form">
             <input type="email" id="email" placeholder="Seu e-mail" required>
             <input type="tel" id="telefone" placeholder="Seu telefone (com DDD)" required>
-            <button type="submit" onclick="handleBuy('6-months')">Comprar Kit 6 Meses</button>
-            <button type="submit" onclick="handleBuy('3-months')">Comprar Kit 3 Meses</button>
-            <button type="submit" onclick="handleBuy('1-month')">Comprar Kit 1 Mês</button>
+            <button type="button" onclick="handleBuy('6-months')">Comprar Kit 6 Meses</button>
+            <button type="button" onclick="handleBuy('3-months')">Comprar Kit 3 Meses</button>
+            <button type="button" onclick="handleBuy('1-month')">Comprar Kit 1 Mês</button>
         </form>
     </section>
 
+    <!-- Carregar o cliente Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script>
-        const supabase = Supabase.createClient('https://ygfuhnhkjuygiaoqyuhc.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlnZnVobmhranV5Z2lhb3F5dWhjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NTgyNzAsImV4cCI6MjA2NDEzNDI3MH0.ykTlt03WV47J30gYoj96-pStFeN-k3IL1ECxFDPxjpw');
+        // Inicializar o cliente Supabase (usar 'supabase' com 's' minúsculo)
+        const supabase = supabase.createClient('SUA_URL_DO_PROJETO', 'SUA_CHAVE_ANON');
 
         async function handleBuy(kit) {
             const email = document.getElementById('email').value;
             const telefone = document.getElementById('telefone').value;
 
-            // Salvar dados do usuário no Supabase
+            // Validar entrada
+            if (!email || !telefone) {
+                alert('Por favor, preencha e-mail e telefone.');
+                return;
+            }
+
+            // Salvar dados no Supabase
             const { error } = await supabase
                 .from('leads')
                 .insert({ email, telefone, kit_selecionado: kit });
@@ -38,7 +52,7 @@
                 return;
             }
 
-            // Redirecionar para o checkout da Payt
+            // Redirecionar para o checkout da Payt (substitua pela URL real)
             window.location.href = `https://api.payt.com/checkout?kit=${kit}&email=${encodeURIComponent(email)}&telefone=${encodeURIComponent(telefone)}`;
         }
     </script>
