@@ -29,7 +29,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script>
         // Inicializar o cliente Supabase (usar 'supabase' com 's' minúsculo)
-        const supabase = supabase.createClient('SUA_URL_DO_PROJETO', 'SUA_CHAVE_ANON');
+        const supabase = supabase.createClient('SUPABASE_URL', 'SUPABASE_ANON_KEY');
 
         async function handleBuy(kit) {
             const email = document.getElementById('email').value;
