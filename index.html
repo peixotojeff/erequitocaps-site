@@ -6,7 +6,6 @@
     <title>ErequitoCaps</title>
     <!-- Adicione seu CSS aqui -->
     <style>
-        /* Estilo básico para o formulário */
         body { font-family: Arial, sans-serif; text-align: center; }
         form { margin: 20px; }
         input, button { margin: 10px; padding: 10px; }
@@ -25,12 +24,11 @@
         </form>
     </section>
 
-    <!-- Carregar o cliente Supabase -->
-    <script type="module" src="/main.js"></script>
+    <!-- Carregar o cliente Supabase (UMD) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script>
-        // Inicializar o cliente Supabase (usar 'supabase' com 's' minúsculo)
-        const supabase = supabase.createClient('SUPABASE_URL', 'SUPABASE_ANON_KEY');
+        // Inicializar o cliente Supabase
+        const supabase = supabase.createClient('https://ygfuhnhkjuygiaoqyuhc.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlnZnVobmhranV5Z2lhb3F5dWhjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NTgyNzAsImV4cCI6MjA2NDEzNDI3MH0.ykTlt03WV47J30gYoj96-pStFeN-k3IL1ECxFDPxjpw');
 
         async function handleBuy(kit) {
             const email = document.getElementById('email').value;
@@ -53,8 +51,8 @@
                 return;
             }
 
-            // Redirecionar para o checkout da Payt (substitua pela URL real)
-            window.location.href = `https://api.payt.com/checkout?kit=${kit}&email=${encodeURIComponent(email)}&telefone=${encodeURIComponent(telefone)}`;
+            // Redirecionar para o checkout da Payt
+            window.location.href = `https://red.trck.erequitocaps.com/click/1?clickid=6838f7306ad57c285ea5ad8c&rtkck=1748563761?kit=${kit}&email=${encodeURIComponent(email)}&telefone=${encodeURIComponent(telefone)}`;
         }
     </script>
 </body>
