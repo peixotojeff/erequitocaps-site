@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  header {
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  header .btn {
+    background-color: #3cf000;
+    border-color: #3cf000;
+  }
+  
+  header .btn:hover {
+    background-color: #2ba600;
+    border-color: #2ba600;
+  }
+  
+  section h2 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .list-group-item {
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+  }
+  
+  .list-group-item .checkmark {
+    color: #3cf000;
+    margin-right: 10px;
+  }
+  
+  .bg-danger {
+    background-color: #c22a00 !important;
+  }
+  
+  .card {
+    border-radius: 0;
+  }
+  
+  .card.border-success {
+    border-width: 8px !important;
+  }
+  
+  .card.border-danger {
+    border-width: 3px !important;
+  }
+  
+  .card .badge {
+    font-size: 1rem;
+  }
+  
+  .card .btn-warning {
+    background-color: #ffcc00;
+    border-color: #ffcc00;
+  }
+  
+  .card .btn-warning:hover {
+    background-color: #e6b800;
+    border-color: #e6b800;
+  }
+  
+  .card .text-primary {
+    color: #007bff !important;
+  }
+  
+  footer {
+    background-color: #333;
+    color: white;
+  }
+  
+  footer h5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  footer a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
+  footer .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .accordion-button {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  .accordion-button:not(.collapsed) {
+    background-color: #f8f9fa;
+    color: #000;
+  }
+  
+  .accordion-body {
+    background-color: #f8f9fa;
+  }
+
+  .texto-destaque {
+    color: #892A3F;
+  }
+
+  .accordion-collapse.collapse {
+    color: #892A3F;
+  }
+
+  .btn.btn-warning {
+      background-color: #10B906;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 26px;
+      border-radius: 10px 10px 10px 10px;
+  }

@@ -1,24 +1,29 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import { createClient } from '@supabase/supabase-js';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const supabase = createClient(
+    import.meta.env.VITE_SUPABASE_URL,
+    import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 
-setupCounter(document.querySelector('#counter'))
+window.handleBuy = async function (kit) {
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+
+    if (!email || !telefone) {
+        alert('Por favor, preencha e-mail e telefone.');
+        return;
+    }
+
+    const { error } = await supabase
+        .from('leads')
+        .insert({ email, telefone, kit_selecionado: kit });
+
+    if (error) {
+        console.error('Erro ao salvar lead:', error);
+        alert('Erro ao processar. Tente novamente.');
+        return;
+    }
+
+    const paytCheckoutUrl = import.meta.env.VITE_PAYT_CHECKOUT_URL;
+    window.location.href = `${paytCheckoutUrl}?kit=${kit}&email=${encodeURIComponent(email)}&telefone=${encodeURIComponent(telefone)}`;
+};

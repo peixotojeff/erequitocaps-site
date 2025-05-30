@@ -1,96 +1,130 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+header {
+  color: white;
   text-align: center;
+  padding: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+header .btn {
+  background-color: #3cf000;
+  border-color: #3cf000;
 }
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+
+header .btn:hover {
+  background-color: #2ba600;
+  border-color: #2ba600;
+}
+
+section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.list-group-item {
+  background-color: #fff;
+  border: none;
+  padding: 10px;
+}
+
+.list-group-item .checkmark {
+  color: #3cf000;
+  margin-right: 10px;
+}
+
+.bg-danger {
+  background-color: #c22a00 !important;
 }
 
 .card {
-  padding: 2em;
+  border-radius: 0;
 }
 
-.read-the-docs {
-  color: #888;
+.card.border-success {
+  border-width: 8px !important;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.card.border-danger {
+  border-width: 3px !important;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.card .badge {
+  font-size: 1rem;
+}
+
+.card .btn-warning {
+  background-color: #ffcc00;
+  border-color: #ffcc00;
+}
+
+.card .btn-warning:hover {
+  background-color: #e6b800;
+  border-color: #e6b800;
+}
+
+.card .text-primary {
+  color: #007bff !important;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+}
+
+footer h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer .btn {
+  width: 100%;
+  max-width: 300px;
+}
+
+.accordion-button {
+  background-color: #fff;
+  color: #000;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #f8f9fa;
+  color: #000;
+}
+
+.accordion-body {
+  background-color: #f8f9fa;
+}
+
+.texto-destaque {
+  color: #892A3F;
+}
+
+.accordion-collapse.collapse {
+  color: #892A3F;
+}
+
+.btn.btn-warning {
+    background-color: #10B906;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 26px;
+    border-radius: 10px 10px 10px 10px;
 }
