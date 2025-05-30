@@ -1,5 +1,4 @@
-# Logs
-logs
+# Ignora arquivos de log
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,6 +6,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+
+# Ignora o diretório de dependências instalado pelo npm
 node_modules
 dist
 dist-ssr
@@ -24,3 +25,15 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Ignora o arquivo de variáveis de ambiente (contém informações sensíveis como chaves API)
+.env
+
+# Ignora arquivos de sistema do macOS
+.DS_Store
+
+# Ignora o diretório de saída de build gerado pelo Vite
+dist/
+
+# Ignora o diretório de cache do Vite
+.vite/
