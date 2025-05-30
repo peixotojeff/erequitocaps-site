@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ErequitoCaps</title>
-    <!-- Adicione seu CSS aqui -->
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
         form { margin: 20px; }
@@ -24,23 +23,24 @@
         </form>
     </section>
 
-    <!-- Carregar o cliente Supabase (UMD) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script>
-        // Inicializar o cliente Supabase
-        const supabase = supabase.createClient('https://ygfuhnhkjuygiaoqyuhc.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlnZnVobmhranV5Z2lhb3F5dWhjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NTgyNzAsImV4cCI6MjA2NDEzNDI3MH0.ykTlt03WV47J30gYoj96-pStFeN-k3IL1ECxFDPxjpw');
+        // Carregar variáveis de ambiente (substitua pelos valores do .env)
+        const supabase = supabase.createClient(
+            'SUA_URL_DO_PROJETO', // Substitua ou injete via build
+            'SUA_CHAVE_ANON'
+        );
+        const paytCheckoutUrl = 'https://api.payt.com/checkout'; // Substitua ou injete
 
         async function handleBuy(kit) {
             const email = document.getElementById('email').value;
             const telefone = document.getElementById('telefone').value;
 
-            // Validar entrada
             if (!email || !telefone) {
                 alert('Por favor, preencha e-mail e telefone.');
                 return;
             }
 
-            // Salvar dados no Supabase
             const { error } = await supabase
                 .from('leads')
                 .insert({ email, telefone, kit_selecionado: kit });
@@ -51,8 +51,7 @@
                 return;
             }
 
-            // Redirecionar para o checkout da Payt
-            window.location.href = `https://red.trck.erequitocaps.com/click/1?clickid=6838f7306ad57c285ea5ad8c&rtkck=1748563761?kit=${kit}&email=${encodeURIComponent(email)}&telefone=${encodeURIComponent(telefone)}`;
+            window.location.href = `${paytCheckoutUrl}?kit=${kit}&email=${encodeURIComponent(email)}&telefone=${encodeURIComponent(telefone)}`;
         }
     </script>
 </body>
