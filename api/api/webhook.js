@@ -34,11 +34,12 @@ module.exports = async (req, res) => {
             return res.status(400).json({ error: 'Token não encontrado' });
         }
 
+        const timestamp = Date.now();
         const hash = crypto
             .createHash('sha256')
-            .update(`${clienteId}-${produtoId}-${Date.now()}-${process.env.SECRET_KEY}`)
+            .update(`${clienteId}-${produtoId}-${timestamp}-${process.env.SECRET_KEY}`)
             .digest('hex');
-        const linkRecuperacao = `https://erequitocaps-site.vercel.app/recuperar?c=${encodeURIComponent(clienteId)}&p=${encodeURIComponent(produtoId)}&h=${hash}`;
+        const linkRecuperacao = `https://erequitocaps-site.vercel.app/recuperar?c=${encodeURIComponent(clienteId)}&p=${encodeURIComponent(produtoId)}&h=${hash}&t=${timestamp}`;
 
         await axios.post(process.env.N8N_WEBHOOK_URL, {
             telefone,
@@ -50,6 +51,9 @@ module.exports = async (req, res) => {
 
     if (req.method === 'GET' && req.url.includes('/recuperar')) {
         const { c: clienteId, p: produtoId, h: hash } = req.query;
+        if (Date.now() - parseInt(timestamp) > 24 * 60 * 60 * 1000) {
+            return res.status(400).json({ error: 'Link expirado' });
+        }
         const expectedHash = crypto
             .createHash('sha256')
             .update(`${clienteId}-${produtoId}-${Date.now()}-${process.env.SECRET_KEY}`)
